@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Happy Birthday, Mom!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: a polished product launch page, personal but professional, skimmable on a phone
+   IDEA: the gift presented like a well-made software product, its contents shown as an app window
+   PICTURE: a "Your gift" app window listing the four things inside, each row a link
+   COLOUR and TYPE: warm paper ground, near-black ink, one electric blue; Schibsted Grotesk throughout
+   LAYOUT: hero + gift window, sticky section pills, four sections, build partner close */
+:root{color-scheme:light dark;
+--bg:light-dark(#f6f5f2,#111316);--ink:light-dark(#121417,#eceae5);--soft:light-dark(#555b63,#a7acb3);
+--card:light-dark(#ffffff,#1a1d21);--line:light-dark(#dddad3,#2d3137);--hair:light-dark(#eceae5,#24282d);
+--blue:light-dark(#2448d8,#8aa2ff);--tint:light-dark(#eef2ff,#1c2340);--warn:light-dark(#fff4e5,#2e2414);--warnink:light-dark(#8a5000,#f0c27a)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 "Schibsted Grotesk",system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{line-height:1.05;letter-spacing:-.02em;text-wrap:balance;margin:0}
+h1{font-size:clamp(38px,6.4vw,60px);font-weight:700}h2{font-size:clamp(28px,4vw,40px);font-weight:700}h3{font-size:20px;font-weight:700;letter-spacing:-.01em}
+p{margin:0}a{color:var(--blue)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 max(5vw,18px)}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:18px;font-size:15px;color:var(--soft)}
+.top b{color:var(--ink)}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px clamp(28px,5vw,64px);align-items:center;padding-block:clamp(24px,5vw,64px) clamp(40px,6vw,80px)}
+html{scroll-padding-top:72px;scroll-behavior:smooth}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.hero .gift{grid-column:2;grid-row:1/span 2}.hero .more{grid-column:1;grid-row:2;align-self:start}.hero>div:first-child{align-self:end}
+.accent{color:var(--blue)}
+.eyebrow{font-weight:600;color:var(--blue);margin-bottom:16px}
+.sub{font-size:19px;color:var(--soft);margin-top:20px;max-width:34ch}
+.note{margin-top:0;padding:16px 18px;border-left:3px solid var(--blue);background:var(--card);border-radius:0 10px 10px 0;font-size:16px}
+.note small{display:block;color:var(--soft);font-size:13px;margin-top:6px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border-radius:999px;font-weight:600;text-decoration:none;background:var(--ink);color:var(--bg)}
+.btn.alt{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.win{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 32px 64px -32px rgba(18,20,23,.35);overflow:hidden}
+.bar{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--hair);font-size:13px;color:var(--soft)}
+.bar i{width:10px;height:10px;border-radius:50%;background:var(--line)}.bar span{margin-left:8px}
+.row{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:14px;align-items:center;padding:16px 18px;border-bottom:1px solid var(--hair);text-decoration:none;color:var(--ink)}
+.row:last-child{border-bottom:0}.row:hover{background:var(--tint)}
+.ic{width:44px;height:44px;border-radius:12px;background:var(--tint);color:var(--blue);display:grid;place-items:center}
+.ic svg{width:22px;height:22px}
+.row b{display:block;font-size:17px}.row small{display:block;color:var(--soft);font-size:14px;line-height:1.4}
+.tag{font-size:13px;font-weight:600;color:var(--blue);white-space:nowrap}
+.pills{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-block:1px solid var(--line)}
+.pills .wrap{display:flex;gap:8px;overflow-x:auto;padding-block:10px;scrollbar-width:none}
+.pills a{flex:none;min-height:40px;display:inline-flex;align-items:center;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);text-decoration:none;font-weight:600;font-size:15px}
+section{padding-block:clamp(48px,7vw,88px);border-bottom:1px solid var(--line)}
+.head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px 48px;align-items:end;margin-bottom:32px}
+.head p{color:var(--soft)}.head .kicker{margin-top:10px;font-weight:600;color:var(--blue)}
+.list{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.course{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:14px;align-items:center;padding:16px 18px;border-bottom:1px solid var(--hair)}
+.course:last-child{border-bottom:0}
+.n{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-weight:700;font-size:15px}
+.course.done .n{background:var(--blue);border-color:var(--blue);color:#fff}
+.course a{font-weight:700;color:var(--ink);text-decoration:none}.course a:hover{color:var(--blue)}
+.course b{font-weight:700}.course small a{color:var(--blue);font-weight:600}
+.course small{display:block;color:var(--soft);font-size:15px;line-height:1.45;margin-top:2px}
+.chk{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;cursor:pointer}
+.chk input{width:22px;height:22px;accent-color:var(--blue)}
+.steps3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:28px}
+.step{border-top:2px solid var(--ink);padding-top:14px}.step b{display:block;font-size:18px}.step p{color:var(--soft);font-size:15px;margin-top:4px}
+.loop{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-bottom:28px}
+.loop div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.loop div:last-child{background:var(--blue);border-color:var(--blue);color:#fff}.loop div:last-child p{color:#dde4ff}
+.loop b{display:block;font-size:16px}.loop p{font-size:14px;color:var(--soft);line-height:1.4;margin-top:4px}
+details.box{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:12px}
+details.box>summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 20px;min-height:44px}
+details.box>summary::-webkit-details-marker{display:none}
+details.box>summary span{color:var(--soft);font-size:15px;display:block;font-weight:400}
+details.box>summary::after{content:"";flex:none;width:10px;height:10px;border-right:2px solid var(--soft);border-bottom:2px solid var(--soft);transform:rotate(45deg);margin-right:4px;transition:transform .2s}
+details.box[open]>summary::after{transform:rotate(-135deg)}
+.in{padding:0 20px 20px}
+ol.do{margin:0;padding:0;list-style:none;counter-reset:d;display:grid;gap:12px}
+ol.do li{counter-increment:d;display:grid;grid-template-columns:30px minmax(0,1fr);gap:10px;font-size:16px}
+ol.do li::before{content:counter(d);width:26px;height:26px;border-radius:50%;background:var(--tint);color:var(--blue);display:grid;place-items:center;font-weight:700;font-size:13px;margin-top:1px}
+.words{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-top:18px}
+.words div{border:1px solid var(--hair);border-radius:10px;padding:12px}.words b{display:block}.words p{color:var(--soft);font-size:15px}
+.kits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}
+.kit .top2{padding:20px 20px 6px}.kit .top2 p{color:var(--soft);margin-top:6px;font-size:16px}
+.badge{display:inline-block;font-size:13px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--tint);color:var(--blue);margin-bottom:10px}
+.badge.w{background:var(--warn);color:var(--warnink)}
+.ph{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;padding:12px 20px;border-top:1px solid var(--hair)}
+.ph::before{content:"";width:10px;height:10px;border-radius:50%;border:2px solid var(--blue);margin-top:7px}
+.ph b{display:block;font-size:16px}.ph p{color:var(--soft);font-size:15px}
+.ph.gate::before{border-color:var(--warnink);background:var(--warnink)}
+.kit details{border-top:1px solid var(--hair)}
+.kit details>summary{cursor:pointer;padding:14px 20px;font-weight:600;color:var(--blue);min-height:44px}
+.callout{background:var(--warn);border-radius:10px;padding:14px 16px;margin:0 20px 16px;font-size:15px}
+.callout b{color:var(--warnink)}.callout ul{margin:6px 0 0;padding-left:18px}
+.prompt{border:1px solid var(--line);border-radius:12px;margin:0 20px 14px;overflow:hidden}
+.prompt header{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 8px 8px 14px;background:var(--tint);font-weight:600;font-size:15px}
+.prompt button{min-height:40px;padding:0 16px;border-radius:999px;border:0;background:var(--ink);color:var(--bg);font:600 14px "Schibsted Grotesk",sans-serif;cursor:pointer}
+.prompt pre{margin:0;padding:14px;white-space:pre-wrap;font:15px/1.5 "Schibsted Grotesk",sans-serif;color:var(--ink)}
+.refs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.ref{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.ref ul{margin:10px 0 0;padding-left:18px;font-size:15px}.ref li{margin:5px 0}
+.ref.red{border:2px solid var(--warnink)}
+kbd{font:600 13px "Schibsted Grotesk";border:1px solid var(--line);border-radius:6px;padding:1px 6px;white-space:nowrap;background:var(--bg)}
+.partner{background:var(--ink);color:var(--bg);border-radius:20px;padding:clamp(24px,4vw,48px)}
+.partner h2{color:var(--bg)}.partner>p{color:color-mix(in srgb,var(--bg) 72%,var(--ink));margin-top:12px;max-width:52ch}
+.checks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:28px}
+.checks div{border:1px solid color-mix(in srgb,var(--bg) 22%,var(--ink));border-radius:12px;padding:16px}
+.checks b{display:block}.checks p{font-size:15px;color:color-mix(in srgb,var(--bg) 70%,var(--ink));margin-top:4px}
+footer{padding-block:28px 48px;color:var(--soft);font-size:14px}
+.fg{display:flex;flex-direction:column;gap:6px}
+.fgs{border-top:1px solid var(--hair);padding-top:18px;margin-top:12px}.fgs:first-child{border-top:0;margin-top:0;padding-top:0}
+.fgs h3{margin-bottom:8px}.fgs>p{color:var(--soft);font-size:16px;margin-bottom:10px}.fgs em{font-style:normal;font-weight:700;color:var(--ink)}
+.fgl{margin:0;padding-left:22px;display:grid;gap:8px;font-size:16px}.fgl2{margin:8px 0 12px;padding-left:20px;display:grid;gap:6px;font-size:16px}
+.fgn{font-size:14px;color:var(--soft)}
+code{font:600 .88em ui-monospace,"Cascadia Code",Consolas,monospace;background:var(--tint);color:var(--blue);padding:1px 5px;border-radius:5px;overflow-wrap:anywhere}
+.fg .prompt{margin:12px 0}.prompt.code pre{font:13.5px/1.55 ui-monospace,"Cascadia Code",Consolas,monospace;max-height:340px;overflow:auto}
+.prompt header small{display:block;font-weight:400;color:var(--soft);font-size:13px}
+details.sub{margin-top:8px}details.sub>summary{cursor:pointer;font-weight:600;color:var(--blue);min-height:44px;display:flex;align-items:center}
+.scroll{overflow-x:auto}.mt{width:100%;border-collapse:collapse;font-size:15px;margin:6px 0 4px}.mt th,.mt td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--hair)}.mt th{color:var(--soft);font-weight:600;font-size:13px}
+.wk{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.wk div{border:1px solid var(--hair);border-radius:12px;padding:14px}.wk p{color:var(--soft);font-size:15px;margin-top:4px}
+@media(max-width:560px){.wk{grid-template-columns:minmax(0,1fr)}}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+@media(max-width:860px){.hero .gift,.hero .more{grid-column:auto;grid-row:auto}.hero .gift{order:2}.hero .more{order:3}.hero,.head,.kits{grid-template-columns:minmax(0,1fr)}.loop{grid-template-columns:repeat(3,minmax(0,1fr))}.refs,.checks,.steps3{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:560px){.loop{grid-template-columns:repeat(2,minmax(0,1fr))}.tag{display:none}.row{grid-template-columns:44px minmax(0,1fr)}body{font-size:16px}}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.win{animation:rise .6s ease-out both}
+@media(prefers-reduced-motion:reduce){.win{animation:none}}
+</style>
+</head>
+<body>
+
+<div class="wrap top"><span>November 29, 2026</span><span><b>Love, Connor</b></span></div>
+
+<header class="wrap hero">
+ <div>
+  <p class="eyebrow">Happy Birthday, Mom!</p>
+  <h1>From an AI user to an <span class="accent">AI builder.</span></h1>
+  <p class="sub">A curated training plan, a personal intro to building apps with Claude, and starter kits for the two ideas you've shared with me. Plus me as your build partner along the way :)</p>
+ </div>
+ <div class="more">
+  <div class="cta"><a class="btn" href="#learn">Start with the training</a><a class="btn alt" href="#partner">How I'll help</a></div>
+ </div>
+ <div class="win gift" aria-label="What's in your gift">
+  <div class="bar"><i></i><i></i><i></i><span>Your gift · 4 items</span></div>
+  <a class="row" href="#learn"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.5 12 3l9 3.5-9 3.5z"/><path d="M7 8.5v5c0 1.5 2.2 3 5 3s5-1.5 5-3v-5"/></svg></span><span><b>Training plan</b><small>Six free Anthropic courses and a terminal primer, in the order that fits you</small></span><span class="tag">7 steps</span></a>
+  <a class="row" href="#start"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7.5 9l2.5 2-2.5 2M12.5 13h4"/></svg></span><span><b>Connor's Field Guide</b><small>How it works, a one-afternoon setup for Windows, and my full playbook</small></span><span class="tag">Playbook</span></a>
+  <a class="row" href="#kits"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 3 7.5 12 12l9-4.5z"/><path d="m3 12 9 4.5 9-4.5M3 16.5 12 21l9-4.5"/></svg></span><span><b>Starter kits</b><small>Golf partner app and the insurance knowledge tool</small></span><span class="tag">2 ideas</span></a>
+  <a class="row" href="#guide"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h10l4 4v14H5z"/><path d="M14 3v5h5M9 12h6M9 16h6"/></svg></span><span><b>Quick Reference</b><small>One screen to check before and during every build</small></span><span class="tag">One screen</span></a>
+ </div>
+</header>
+
+<nav class="pills" aria-label="Sections"><div class="wrap"><a href="#learn">Training plan</a><a href="#start">Connor's Field Guide</a><a href="#kits">Starter kits</a><a href="#guide">Quick Reference</a><a href="#partner">Build partner</a></div></nav>
+
+<main>
+<section id="learn"><div class="wrap">
+ <div class="head"><h2>Your training plan</h2><p>All free and self-paced, from Anthropic Academy, plus one short terminal primer. Tick each one off as you finish.</p></div>
+ <div class="list" id="courses"></div>
+ <div class="steps3">
+  <div class="step"><b>1. Create an account</b><p>Free, with your email, at <a href="https://anthropic.skilljar.com/">anthropic.skilljar.com</a>. No paid plan needed.</p></div>
+  <div class="step"><b>2. Enroll in course 1</b><p>Open it from the list above and click Enroll.</p></div>
+  <div class="step"><b>3. Finish the assessment</b><p>That's what earns the certificate, where a course offers one.</p></div>
+ </div>
+ <details class="box" style="margin-top:28px"><summary><div>Later, if you're hooked<span>Three optional extras</span></div></summary><div class="list" id="extras" style="margin:0 20px 20px"></div></details>
+</div></section>
+
+<section id="start"><div class="wrap">
+ <div class="head"><div><h2>Connor's Field Guide</h2><p class="kicker">How building with Claude works</p></div><p>You won't need to write code. You describe, decide, review and test, and Claude does the typing. Every project, big or small, runs on this loop.</p></div>
+ <div class="loop">
+  <div><b>Interview</b><p>Claude asks you questions, with a suggested answer for each.</p></div>
+  <div><b>Plan</b><p>It writes a short design and a step-by-step build plan.</p></div>
+  <div><b>Review</b><p>You redline the plan, like a draft contract.</p></div>
+  <div><b>Build</b><p>One small step at a time.</p></div>
+  <div><b>See it work</b><p>Claude shows it running. You click around.</p></div>
+  <div><b>Save</b><p>A checkpoint you can always go back to.</p></div>
+ </div>
+ <details class="box"><summary><div>Set up your Windows computer<span>One afternoon, ideally with me. Seven steps.</span></div></summary><div class="in"><ol class="do" id="setup"></ol></div></details>
+ <details class="box"><summary><div>Five words you'll hear<span>Plain-English definitions</span></div></summary><div class="in"><div class="words" id="vocab" style="margin-top:0"></div></div></details>
+ <details class="box"><summary><div>Connor's full field guide<span>My playbook: the design flow, a project starter kit, saved commands, getting the most from Pro, helpers, and your first weekend</span></div></summary><div class="in fg" id="fg"></div></details>
+</div></section>
+
+<section id="kits"><div class="wrap">
+ <div class="head"><h2>Starter kits for your two ideas</h2><p>Each has phases, what to leave out on purpose, and prompts you can copy straight into Claude. Start with golf: it's the practice project.</p></div>
+ <div class="kits">
+  <div class="win kit" style="animation:none"><div class="top2"><span class="badge">Practice project</span><h3>Golf partner app</h3><p>Help women golfers find partners nearby and set up a round.</p></div><div id="golf"></div></div>
+  <div class="win kit" style="animation:none"><div class="top2"><span class="badge w">Real project</span><h3>Insurance knowledge tool</h3><p>Capture the owner's expertise, then cut the manual quoting work. Knowledge first, software second.</p></div><div id="ins"></div></div>
+ </div>
+ <details class="box" style="margin-top:20px"><summary><div>Prompts for any project<span>House rules, building a step, reviewing, getting unstuck</span></div></summary><div id="anyp" style="padding-top:4px"></div></details>
+</div></section>
+
+<section id="guide"><div class="wrap">
+ <div class="head"><h2>Quick Reference</h2><p>Read it before every build. Shortcuts are for the Code tab in the Claude desktop app on Windows.</p></div>
+ <div class="refs" id="refs"></div>
+</div></section>
+
+<section id="partner" style="border-bottom:0"><div class="wrap">
+ <div class="partner">
+  <h2>Your build partner</h2>
+  <p>The courses teach the ideas. I'll help with the parts they skip. We'll meet at each of these points, and you can call any time in between.</p>
+  <div class="checks" id="checkins"></div>
+ </div>
+</div></section>
+</main>
+
+<footer class="wrap">Courses checked against Anthropic Academy on November 24, 2026. Apps and buttons change; if something looks different, ask Claude or call me.</footer>
+
+<script>
+{
+const SK='https://anthropic.skilljar.com/';
+const courses=[
+ ['ai-fluency-framework-foundations','AI Fluency: Framework & Foundations','Start here. Working with AI effectively, ethically and safely: the judgment you built throughout your career, turned into a framework.'],
+ ['claude-101','Claude 101','A quick skim. Everyday Claude features you may not be using yet.'],
+ ['ai-fluency-for-builders','AI Fluency for Builders','Owning a project from problem to shipped solution. The bridge from researcher to builder.'],
+ ['introduction-to-claude-cowork','Introduction to Claude Cowork','Working with Claude on real files and projects. Your first taste of agents, still no code.'],
+ ['claude-code-101','Claude Code 101','Your first real contact with the coding tool. Follow along in the Code tab of the desktop app.'],
+ ['@terminal','Terminal primer (not Anthropic)','Two short reads that make the terminal a tool, not a hazard: Anthropic\'s <a href="https://code.claude.com/docs/en/terminal-guide">Terminal guide for new users</a> (read the Windows part) and Treehouse\'s <a href="https://blog.teamtreehouse.com/introduction-to-the-mac-os-x-command-line">Command Line Tutorial for Beginners</a>. Try them with me.'],
+ ['claude-code-in-action','Claude Code in Action','Steering and checking longer sessions. It assumes some terminal comfort, so take it after your first build, with me.']];
+const extras=[
+ ['ai-capabilities-and-limitations','AI Capabilities and Limitations','How AI works under the hood. Good any time.'],
+ ['introduction-to-agent-skills','Introduction to agent skills','Saving reusable instructions so you stop repeating yourself.'],
+ ['introduction-to-subagents','Introduction to subagents','Letting Claude hand off pieces of the work. Level two.']];
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const row=(c,i,pre)=>`<div class="course"><span class="n">${pre}${i+1}</span><div>${c[0][0]==='@'?`<b>${c[1]}</b>`:`<a href="${SK}${c[0]}">${c[1]}</a>`}<small>${c[2]}</small></div><label class="chk"><input type="checkbox" data-k="${c[0]}" aria-label="Mark ${c[1]} done"></label></div>`;
+document.getElementById('courses').innerHTML=courses.map((c,i)=>row(c,i,'')).join('');
+document.getElementById('extras').innerHTML=extras.map((c,i)=>row(c,i,'+')).join('');
+
+const setup=[
+ ['Install the Claude desktop app','From <a href="https://claude.com/download">claude.com/download</a>. Sign in with your Pro account. You\'ll see three tabs: Chat, Cowork and Code.'],
+ ['Install Git for Windows','From <a href="https://git-scm.com/downloads/win">git-scm.com/downloads/win</a>. Click Next through every screen, then close and reopen Claude. The Code tab needs it on Windows.'],
+ ['Create a free GitHub account','At <a href="https://github.com/signup">github.com/signup</a>. This is where your projects are backed up.'],
+ ['Install GitHub Desktop','From <a href="https://desktop.github.com/">desktop.github.com</a>, and sign in with that account.'],
+ ['Make your first project','In GitHub Desktop: <b>File → New repository</b>. Name it <b>first-project</b>, folder <b>Documents\\Projects</b>, tick <b>Initialize with a README</b>, then <b>Create repository</b>. Click <b>Publish repository</b> and keep <b>Keep this code private</b> ticked.'],
+ ['Open it in Claude','Code tab → <b>+ New</b>. Pick the folder with the project folder control under the prompt box. Set the mode to <b>Plan</b> before typing anything.'],
+ ['Save checkpoints','When something works: in GitHub Desktop type a short summary, click <b>Commit to main</b>, then <b>Push origin</b>. To undo: <b>History</b> → right-click → <b>Revert changes in commit</b>.']];
+document.getElementById('setup').innerHTML=setup.map(s=>`<li><div><b>${s[0]}</b><br>${s[1]}</div></li>`).join('');
+const vocab=[['Repository','A project folder whose history is tracked.'],['Commit','A saved checkpoint, like a signed version of a draft.'],['Push','Back the checkpoints up to GitHub.'],['Revert','Undo one checkpoint without losing the others.'],['Diff','The redline: exactly what Claude changed.']];
+document.getElementById('vocab').innerHTML=vocab.map(v=>`<div><b>${v[0]}</b><p>${v[1]}</p></div>`).join('');
+
+let pid=0;const prompts={};
+const P=(t,x)=>{const id='pr'+(pid++);prompts[id]=x;return `<div class="prompt"><header>${t}<button data-copy="${id}">Copy</button></header><pre id="${id}"></pre></div>`};
+const ph=(t,b,g)=>`<div class="ph${g?' gate':''}"><div><b>${t}</b><p>${b}</p></div></div>`;
+const more=(label,inner)=>`<details><summary>${label}</summary>${inner}</details>`;
+
+document.getElementById('golf').innerHTML=
+ ph('Check people want it','Talk to 10 to 15 women golfers: how they find partners today, and what would make them trust an app. No code.')+
+ ph('Design it with Claude','In Plan mode, Claude interviews you and writes a short design and build plan for you to redline.')+
+ ph('Clickable prototype','Profiles, availability, a partner list and "request a round", with made-up golfers, running on your computer.')+
+ ph('Show it to 5 golfers','Watch where they hesitate. That list is your next plan.')+
+ ph('Decide together','Keep going, change course or park it. Any of the three is a win.')+
+ more('Prompts and guardrails',
+  '<div class="callout"><b>Not yet, on purpose:</b> real sign-ups, phone numbers or home locations; messaging between strangers; payments; club reciprocal rounds.</div>'+
+  P('Draft my interview questions','I have an idea for an app that helps women golfers find other golfers nearby to play with. Before building anything, I want to talk to about 12 women golfers. Write 8 short, non-leading interview questions that test whether this is a real problem, how they solve it today, and what would make them trust meeting a stranger for a round. Then give me a simple one-page sheet to record their answers.')+
+  P('Start the design interview (Plan mode)','I\'m new to building software, so explain things in plain English. I want to build a simple web prototype of an app that helps women golfers find partners nearby and schedule a round. Here\'s what I learned from talking to golfers: [paste your notes].\n\nDon\'t write code yet. Interview me to decide what the first version should do. Ask 3 to 5 questions at a time, and suggest a default answer for each so I can just say "yes" or change it. When you have enough, write:\n1. docs/DESIGN.md: who it\'s for, the problem, the smallest useful first version, and what we are NOT building yet.\n2. docs/BUILD_PLAN.md: small numbered steps, each with how I can check it works by looking at it.\nUse made-up sample golfers only.')+
+  '<div class="callout"><b>Before any real golfer signs up:</b><ul><li>How does someone know who they\'re meeting?</li><li>Is the first round always at a public course and tee time?</li><li>How do people block or report someone?</li><li>How precisely do you show where someone lives or plays?</li></ul></div>');
+
+document.getElementById('ins').innerHTML=
+ ph('Capture the knowledge','Short interviews with the owner, one topic each: sizing up a client, which carriers fit which cases, red flags, exceptions. No code, no client names.')+
+ ph('Map today\'s process','Every field on the current form, where each answer comes from, and which steps are retyping.')+
+ ph('Design it with Claude','The rule: the tool drafts and flags, and a licensed person decides.')+
+ ph('Prototype with made-up clients','Test it against cases the owner already decided. Does it agree with her?')+
+ ph('Compliance gate','Before any real client information goes in. We go through this together.',1)+
+ ph('Pilot alongside the old way','Retire manual steps only when the owner trusts the output.')+
+ more('Prompts and the compliance checklist',
+  P('Plan the interview series (regular Chat)','I\'m helping a health insurance agency owner record what she knows before she hands the business to her successor. She evaluates individual and commercial insurance options for clients, and much of her judgment lives only in her head. Design a series of six 45-minute interviews, one topic per session. For each, give me the goal, 10 open questions, and follow-ups that draw out the reasons behind her decisions and her exceptions. No client names or personal details should be needed.')+
+  P('Turn notes into the playbook','Here are my notes from an interview with the agency owner: [paste notes, no client names]. Turn them into a section of a "Rules and Reasons" playbook. For each rule, give: the situation, what she does, why, the exceptions, and an example with made-up details. Then list the questions I should ask her next time, where her answers were unclear or seemed to contradict each other.')+
+  P('Start the design interview (Plan mode)','I\'m new to building software, so explain in plain English. I want to design a web tool for a health insurance agency. Today a staff member fills in a long manual form and the owner applies her expertise to compare options for individual and commercial clients. Our playbook of her rules is in docs/PLAYBOOK.md.\n\nThe tool should cut the manual work and apply the playbook, but it only drafts and flags. A licensed person makes every recommendation.\n\nDon\'t write code. Interview me 3 to 5 questions at a time, suggesting a default for each. Then write docs/DESIGN.md (users, workflow, what the tool does and never does, and what data it touches) and docs/BUILD_PLAN.md (small steps, each checkable by looking at it). Assume fake clients only. List every place real client or health data would eventually flow, so we can review it before it does.')+
+  '<div class="callout"><b>Compliance gate, answered before real data:</b><ul><li>Do HIPAA or state insurance rules apply to the data this tool will touch?</li><li>Which vendors (AI provider, hosting) would see client data, and do they need a business associate agreement?</li><li>Where is data stored, who can see it, and for how long?</li><li>Is there a record of what the tool suggested and what the broker decided?</li><li>Who is responsible for the final recommendation, and is that clear to clients?</li></ul></div>');
+
+document.getElementById('anyp').innerHTML=
+ P('Set the house rules (first session)','Create a CLAUDE.md file for this project with these standing rules:\n- I\'m a beginner. Explain what you\'ll do in plain English before you do it.\n- Work in small steps from docs/BUILD_PLAN.md, one step at a time.\n- Ask before installing anything or deleting any file.\n- Use made-up data only. Never put passwords, keys or real personal information in the code.\n- After each step, show me it working in the Browser pane and tell me exactly what to check.\n- Remind me to commit in GitHub Desktop when a step works.')+
+ P('Build one step','Do step [number] of docs/BUILD_PLAN.md and nothing else. First tell me in plain English what you\'ll change and which files. When you\'re done, show it running and tell me what to click to check it. If you get stuck twice on the same problem, stop and explain the problem instead of trying more fixes.')+
+ P('Review before I save','Explain the changes since my last commit as if I\'m the client signing off: what changed, what could break, what you didn\'t test, and anything you\'re unsure about. Keep it under 10 lines.')+
+ P('When I\'m lost','Stop. Don\'t change anything. Summarize in plain English where we are, what\'s working, what isn\'t, and give me two options for what to do next, with your recommendation.');
+
+const refs=[
+ ['Modes <kbd>Ctrl+Shift+M</kbd>','<ul><li><b>Plan</b>: thinking only, no file changes. Start every project and big change here.</li><li><b>Auto</b>: the default. Works through an approved plan without routine prompts, with a background safety check.</li><li><b>Manual</b>: asks before each change. Good while learning.</li><li><b>Accept edits</b>: edits files freely, asks before other commands.</li><li><b>Bypass permissions</b>: never.</li></ul>'],
+ ['Models on Pro <kbd>Ctrl+Shift+I</kbd>','<ul><li><b>Opus</b>: planning, design, tricky reviews.</li><li><b>Sonnet</b>: building the steps. Most of your work.</li><li><b>Haiku</b>: tiny fixes and quick questions.</li><li>Effort <kbd>Ctrl+Shift+E</kbd>: medium by default, high for planning.</li><li>Type <b>/usage</b> to see how much of your plan you\'ve used.</li></ul>'],
+ ['Keep sessions clean','<ul><li>One task per session. <kbd>Ctrl+N</kbd> starts a new one.</li><li>If Claude gets confused or the chat gets long, start fresh. It reads your docs folder and catches up.</li><li>Decisions live in docs/, not in the chat.</li></ul>'],
+ ['Phrases that work','<ul><li>"Before you change anything, explain your plan."</li><li>"What are you unsure about?"</li><li>"Show me it working."</li><li>"Ask me questions, and suggest a default for each."</li><li>"Undo that and try something simpler."</li></ul>'],
+ ['Never','<ul><li>Paste passwords, keys or real client information into a chat.</li><li>Skip saving a checkpoint after something works.</li><li>Approve a change you didn\'t understand. Ask first.</li></ul>'],
+ ['Red flags: stop and call Connor','<ul><li>Claude wants to delete many files or work outside your project folder.</li><li>It asks for a password, key or card number.</li><li>It says "done" but can\'t show it working.</li><li>It turns off a test or check to make an error go away.</li><li>The same error comes back three times.</li><li>Anything feels off. Trust that instinct.</li></ul>']];
+document.getElementById('refs').innerHTML=refs.map((r,i)=>`<div class="ref${i===5?' red':''}"><h3>${r[0]}</h3>${r[1]}</div>`).join('');
+
+const checks=[['After setup','A short call to make sure everything talks to each other.'],['After your first design docs','We read the plan together before any code.'],['After your first prototype','A walkthrough, and we plan what\'s next.'],['Before anything goes online','Before real people use it. Always.'],['Before any real client data','Always, no exceptions.'],['Any time a red flag shows up','Calling is never a bother.']];
+document.getElementById('checkins').innerHTML=checks.map(c=>`<div><b>${c[0]}</b><p>${c[1]}</p></div>`).join('');
+
+const FILES=[
+['CLAUDE.md','House rules Claude reads at the start of every session',`# How we work on this project
+
+## About me
+- I'm new to building software. Explain in plain English before you act.
+- I review plans like contracts: be specific, list your assumptions, flag risks.
+
+## Workflow
+- Big changes start in Plan mode. No code until I approve docs/DESIGN.md and docs/BUILD_PLAN.md.
+- Work on one step of docs/BUILD_PLAN.md at a time. Each step has a "How to check" line.
+- After each step, show it running in the Browser pane and tell me exactly what to click.
+- When a step works, remind me to commit in GitHub Desktop.
+- If the same problem fails twice, stop and explain it instead of trying again.
+- At the end of a session, update docs/HANDOFF.md.
+
+## Safety
+- Made-up data only. Never real client, health or personal information.
+- Never put passwords, API keys or tokens in any file. If something needs one, stop and ask me.
+- Ask before installing anything, deleting files, or touching anything outside this folder.
+
+## Keep it lean
+- Read only the files a task needs. Summarize instead of pasting long output.
+- Make the smallest change that does the job. No extra features I didn't ask for.`],
+['.claude/commands/interview.md','Type /interview followed by your idea',`---
+description: Interview me about an idea, then draft the design
+---
+I want to build: $ARGUMENTS
+
+Don't write code. Interview me to decide what the first version should do.
+- Ask 3 to 5 questions at a time, grouped by topic.
+- Give a suggested default answer for every question, so I can reply "defaults are fine" or change only what I disagree with.
+- Cover: who it's for, the problem, the smallest useful first version, what we are NOT building yet, what data it touches, and how we'll know it works.
+
+When you have enough, write docs/DESIGN.md in plain English (about one page) and ask me to review it.`],
+['.claude/commands/build-plan.md','Type /build-plan once the design is approved',`---
+description: Turn the approved design into small, checkable steps
+---
+Read docs/DESIGN.md and write docs/BUILD_PLAN.md:
+- Numbered steps, each small enough to finish in one session.
+- Each step says what changes and has a "How to check" line: something I can see or click.
+- Mark any step that needs an outside service, an account, or real data, and put those last.
+- List open questions at the top.
+
+Then summarize the plan for me in 5 lines.`],
+['.claude/commands/review-plan.md','Type /review-plan in a fresh session',`---
+description: Fresh-eyes review of the design and plan
+---
+Act as a skeptical senior engineer seeing this project for the first time.
+Read CLAUDE.md, docs/DESIGN.md and docs/BUILD_PLAN.md. Don't change anything.
+
+Tell me, in plain English:
+1. Anything missing, vague or contradictory.
+2. Steps that are too big or in the wrong order.
+3. Risks: data, privacy, cost, or anything hard to undo.
+4. The three changes you'd make first.`],
+['.claude/commands/handoff.md','Type /handoff before you stop for the day',`---
+description: Save where we are so the next session can pick up
+---
+Update docs/HANDOFF.md (create it if needed) with:
+- What we finished this session (step numbers).
+- What's working, and how to check it.
+- What's broken or unfinished, and what you'd try next.
+- Decisions I made, and open questions for me.
+
+Keep it under 25 lines. Then tell me it's safe to commit.`],
+['.claude/agents/reviewer.md','A helper that checks work before you save it',`---
+name: reviewer
+description: Reviews recent changes for mistakes, risks, and anything that doesn't match the design. Use after a build step and before committing.
+tools: Read, Grep, Glob
+model: sonnet
+---
+You review changes for someone who is not a programmer.
+Compare the recent changes against docs/DESIGN.md and docs/BUILD_PLAN.md.
+Report in plain English, in under 12 lines:
+- Does it do what the step said?
+- Anything that could break, leak data, or cost money?
+- Any passwords, keys or real personal data in the files?
+- What should I test by hand?
+Do not edit files.`],
+['.gitignore','Keeps secret files out of GitHub',`.env
+.env.*
+*.key
+node_modules/`]];
+const kit='Set up this project folder with my standard kit. Create each file below with exactly this content, plus an empty docs/ folder. Don\'t create anything else. When you\'re done, list what you created.\n\n'+FILES.map(f=>`=== ${f[0]} ===\n${f[2]}`).join('\n\n');
+const S=(name,note,text)=>{const id='pr'+(pid++);prompts[id]=text;return `<div class="prompt code"><header><span>${name}<small>${note}</small></span><button data-copy="${id}">Copy</button></header><pre id="${id}"></pre></div>`};
+const budget=`Budget mode for this session:
+- Work on exactly one step. Don't explore beyond what it needs.
+- Read only the files you need. Use a helper for anything broad, and give me its summary.
+- No long pastes of files or logs: summarize.
+- Make the smallest change that meets the step's "How to check".
+- Reply in 3 lines: what changed, how to check it, what you need from me.
+- Before anything big (many files, long loops, installs), tell me and ask first.`;
+const fgSec=(t,body)=>`<div class="fgs"><h3>${t}</h3>${body}</div>`;
+document.getElementById('fg').innerHTML=
+ fgSec('The mindset','<p>You\'re the client and the architect; Claude is a fast, tireless contractor. Your time goes into deciding <em>what</em> to build and checking that it\'s right. You shouldn\'t be writing long prompts or documents yourself: have Claude interview you, draft the documents, and take your redlines.</p>')+
+ fgSec('The design flow, step by step','<ol class="fgl"><li><b>Start in Plan mode.</b> Claude can look but can\'t change files, so nothing breaks while you think.</li><li><b>Let Claude interview you.</b> Type <code>/interview</code> and your idea. It asks a few questions at a time, each with a suggested answer. Reply "defaults are fine" to anything you agree with.</li><li><b>Redline the design.</b> Claude writes <code>docs/DESIGN.md</code>. Read it like a draft contract and reply with changes in plain words ("drop the map, add a waitlist"). Don\'t edit the file yourself.</li><li><b>Get the build plan.</b> <code>/build-plan</code> turns the design into small numbered steps, each with a "How to check" line.</li><li><b>Get a second opinion.</b> Start a new session (<kbd>Ctrl+N</kbd>) and type <code>/review-plan</code>. A fresh session hasn\'t seen your conversation, so it catches what you both missed.</li><li><b>Build one step per session.</b> Switch out of Plan mode, ask for step 1 only, watch it run in the Browser pane, then commit in GitHub Desktop.</li><li><b>Hand off.</b> Before you stop, type <code>/handoff</code>. Next time, start a new session with "Read docs/HANDOFF.md and continue."</li></ol>')+
+ fgSec('Your project starter kit','<p>Do this once per project, right after creating it in GitHub Desktop. Paste the kit into a new session in the Code tab and it creates every file below: house rules, four saved commands and a reviewer helper. Then type <kbd>/</kbd> in the prompt box to see your commands.</p>'+
+  S('Paste-in starter kit','Creates all of the files below in one go',kit)+
+  '<details class="sub"><summary>See each file on its own</summary>'+FILES.map(f=>S(f[0],f[1],f[2])).join('')+'</details>')+
+ fgSec('Getting the most from Pro','<p>Your Pro plan has a usage allowance that resets over time. The biggest savings come from matching the model to the job and keeping sessions short. Check the model picker each time you start a session; it may default to Opus, which uses your allowance fastest.</p><div class="scroll"><table class="mt"><thead><tr><th>Job</th><th>Model</th><th>Effort</th></tr></thead><tbody><tr><td>Interview and design</td><td>Opus</td><td>Medium to high</td></tr><tr><td>Plan review in a fresh session</td><td>Opus</td><td>Medium</td></tr><tr><td>Building one step</td><td>Sonnet</td><td>Medium</td></tr><tr><td>Small fix, rename, quick question</td><td>Haiku</td><td>Low</td></tr><tr><td>Stuck twice on the same problem</td><td>Stop. New session, Opus</td><td>High</td></tr></tbody></table></div><ul class="fgl2"><li><b>One task, one session.</b> Long conversations get slower, pricier and more confused. <kbd>Ctrl+N</kbd> is your friend.</li><li><b>Write things down.</b> Anything you\'ll need later goes in <code>docs/</code>, so a new session can catch up by reading instead of re-asking.</li><li><b>Squeeze a long session.</b> <code>/compact</code> shrinks the conversation to a summary when you need to keep going.</li><li><b>Don\'t let it thrash.</b> Two failed attempts means stop, not "try again." Re-plan in a fresh session.</li><li><b>Watch the meter.</b> <code>/usage</code> shows how much you\'ve used.</li></ul>'+
+  S('Budget mode','Paste at the start of any build session',budget))+
+ fgSec('Helpers (subagents)','<p>A helper is a second Claude with its own short memory. It does one job, like reviewing or researching, and reports back only a summary, so your main session stays clean. The starter kit gives you a <b>reviewer</b>; Claude also has a built-in <b>Explore</b> helper for finding things.</p>'+
+  S('Review before saving','After a build step','Use the reviewer helper on what you just changed. Tell me what it found in plain English.')+
+  S('Research without clutter','When you need to understand something first','Use an Explore helper to find how [the sign-up screen] works today. Summaries only; don\'t paste files.')+
+  '<p class="fgn">Helpers can\'t stop to ask you questions, so give them the whole job up front.</p>')+
+ fgSec('Checking the work','<ul class="fgl2"><li><b>See it.</b> The Browser pane (<kbd>Ctrl+Shift+B</kbd>) shows your app running. Claude checks its own changes there too, but click around yourself.</li><li><b>Read the redline.</b> Click <b>Changes</b> to see exactly what moved. Hover a line and click <b>+</b> to leave a comment, then <kbd>Ctrl+Enter</kbd> to send them all; Claude makes the edits.</li><li><b>Ask for a review.</b> Type <code>/code-review</code> before a commit for a built-in second look.</li><li><b>Commit only what you\'ve seen work.</b> A commit is your promise to future you that this version was good.</li></ul>')+
+ fgSec('Data and safety','<ul class="fgl2"><li>Keep every repository <b>private</b> unless we decide otherwise together.</li><li>Use <b>made-up data</b> until a project has passed its compliance or safety check with me.</li><li>Passwords and keys never go in chat or in files. If Claude asks for one, that\'s a red flag: stop and call me.</li><li>The <code>.gitignore</code> in your kit keeps secret files out of GitHub if one ever appears.</li></ul>')+
+ fgSec('Your first weekend','<div class="wk"><div><b>Saturday, about 2 hours</b><p>Setup with me (the seven steps above, naming your first project <b>golf-partner</b>). Paste the starter kit and commit. Then <code>/interview</code> with your golf idea, and redline the design.</p></div><div><b>Sunday, about 2 hours</b><p><code>/build-plan</code>, then <code>/review-plan</code> in a fresh session. Build steps 1 and 2, one session each, and commit after each. Finish with <code>/handoff</code> and send me a screenshot.</p></div></div>')+
+ fgSec('Level 2, when you\'re ready','<p>Things I use that you can grow into. We\'ll add them together, one at a time.</p><ul class="fgl2"><li><b>Parallel sessions</b> in the desktop sidebar, each on its own copy of the project.</li><li><b>Hooks</b> that run a check automatically after every edit.</li><li><b>Connectors</b> that let Claude read your other tools, such as Google Drive.</li><li><b>Skills</b>: packaged instructions for jobs you repeat.</li><li><b>The terminal</b> version of Claude Code, for unattended overnight runs.</li></ul>');
+
+for(const id in prompts)document.getElementById(id).textContent=prompts[id];
+function sel(id){const r=document.createRange();r.selectNodeContents(document.getElementById(id));const s=getSelection();s.removeAllRanges();s.addRange(r)}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-copy]');if(!b)return;const id=b.dataset.copy;
+ const ok=()=>{b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1600)},no=()=>{sel(id);b.textContent='Select & copy'};
+ try{navigator.clipboard.writeText(prompts[id]).then(ok,no)}catch(err){no()}});
+for(const cb of document.querySelectorAll('input[data-k]')){const k='mom-'+cb.dataset.k,c=cb.closest('.course');cb.checked=store.get(k)==='1';c.classList.toggle('done',cb.checked);
+ cb.addEventListener('change',()=>{store.set(k,cb.checked?'1':'0');c.classList.toggle('done',cb.checked)})}
+}
+</script>
+</body>
+</html>
